@@ -20,7 +20,7 @@
 
 1. Поставити [Tampermonkey extension](https://www.tampermonkey.net/).
 2. Включити [Developer mode](https://www.tampermonkey.net/faq.php?locale=en#Q209) щоб використовувати юзер скрипти.
-3. [Поставити](https://raw.githubusercontent.com/qa-helloembody/Cookie-Editor/main/cookie-editor.user.js) сам юзер скрипт
+3. [Поставити](https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js) сам юзер скрипт
 
 ---
 
