@@ -9,6 +9,8 @@
 // @match       https://haf-frontend.stage.prokit.me/*
 // @match       https://plan.helloembody.com/*
 // @grant       GM_addStyle
+// @updateURL   https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js
+// @downloadURL https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js
 // @license     MIT
 // ==/UserScript==
 
