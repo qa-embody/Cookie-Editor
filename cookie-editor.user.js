@@ -1,16 +1,14 @@
 // ==UserScript==
-// @name        Cookie Editor Pro (Mobile v3.14 - Tai Chi)
+// @name        Cookie Editor Pro (Mobile v3.16 - No Reload & Reorder)
 // @namespace   http://tampermonkey.net/
-// @version     3.14.0
-// @description Added Tai Chi (tch2f23r) support. Hides Sandbox. Tai Chi Level display.
+// @version     3.16.0
+// @description Added marketing params. Changed quick fill json for updated diet field: changed from string to array
 // @author      Bohdan S.
 // @match       https://haf-frontend.dev.prokit.me/*
 // @match       https://haf-frontend.dev2.prokit.me/*
 // @match       https://haf-frontend.stage.prokit.me/*
 // @match       https://plan.helloembody.com/*
 // @grant       GM_addStyle
-// @updateURL   https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js
-// @downloadURL https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js
 // @license     MIT
 // ==/UserScript==
 
@@ -35,7 +33,7 @@
                 "currentWeight": { "value": 44, "selectedUnit": "kg" }, "targetWeight": { "value": 55, "selectedUnit": "kg" }, "age": { "value": 33, "selectedUnit": "years" },
                 "obstacles": ["Health issues", "Stress or other life factors"], "workoutType": ["Chair Barre", "Wall Pilates"], "workoutPreferences": ["All lying exercises"],
                 "fitnessLevelScreen": "Intermediate", "flexibilityLevel": "I can touch the floor with my fingertips", "exerciseActivityLevel": "Occasionally", "stairsLevel": "Slightly winded after several flights",
-                "walkingActivity": "Less than 1 hour", "squatsLevel": "Fewer 12", "dailyActivityLevel": "Mostly sedentary", "energyLevel": "Low, tired most of the day", "sleepTime": "Less than 5 hours", "water": "About 2 glasses", "diet": "Vegan",
+                "walkingActivity": "Less than 1 hour", "squatsLevel": "Fewer 12", "dailyActivityLevel": "Mostly sedentary", "energyLevel": "Low, tired most of the day", "sleepTime": "Less than 5 hours", "water": "About 2 glasses", "diet": ["Mediterranean","Vegetarian"],
                 "badFoodHabits": ["Overeating"], "fitnessLevel": "Low",
                 "obese": { "BMI": "19.6", "BMI_range": "healthy", "somatotype": "mesomorph", "lifestyle": "sedentary", "fitness_level": "low", "metabolism": "moderate" },
                 "importantEvent": "Other", "email": "hafrealtestmailf1+test@gmail.com", "name": "flex"
@@ -49,7 +47,7 @@
                 "weightChange": "I gain weight quickly but lose it slowly", "bestShape": "More than 3 years ago", "problemAreas": ["Legs"], "height": { "value": 150, "selectedUnit": "cm" }, "weightGoalDiff": 25,
                 "currentWeight": { "value": 44, "selectedUnit": "kg" }, "targetWeight": { "value": 55, "selectedUnit": "kg" }, "age": { "value": 66, "selectedUnit": "years" },
                 "obstacles": ["Health issues"], "fitnessLevelScreen": "Advanced", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Regularly", "stairsLevel": "Out of breath after 1-2 flights",
-                "walkingActivity": "More than 2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Moderately active", "energyLevel": "High and consistent all day", "sleepTime": "Less than 5 hours", "water": "More than 10 glasses", "diet": "Mediterranean",
+                "walkingActivity": "More than 2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Moderately active", "energyLevel": "High and consistent all day", "sleepTime": "Less than 5 hours", "water": "More than 10 glasses", "diet": ["None"],
                 "badFoodHabits": ["Skipping meal to often"], "fitnessLevel": "Intermediate",
                 "obese": { "BMI": "19.6", "BMI_range": "healthy", "somatotype": "endomorph", "lifestyle": "active", "fitness_level": "intermediate", "metabolism": "slow" },
                 "referralSource": "Coach", "importantEvent": "Wedding", "importantEventDate": "03/22/2026", "personalConfidence": "I’m still really unsure", "email": "hafrealtestmailc1+test@gmail.com", "name": "Chair Yoga"
@@ -62,7 +60,7 @@
                 "totalScreens": 60, "firstScreenAge": 50, "chairYogaExperienceScreen": "Yes", "goal": "Maintain weight", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Total Body"],
                 "weightChange": "I gain and lose weight easily", "bestShape": "1 to 2 years ago", "problemAreas": ["Legs", "Back", "Arms", "Neck"], "height": { "value": 180, "selectedUnit": "cm" }, "weightGoalDiff": 11,
                 "currentWeight": { "value": 44, "selectedUnit": "kg" }, "targetWeight": { "value": 49, "selectedUnit": "kg" }, "age": { "value": 55, "selectedUnit": "years" },
-                "obstacles": ["Health issues", "Unrealistic expectations"], "fitnessLevelScreen": "Advanced", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Regularly", "stairsLevel": "Out of breath after 1-2 flights", "walkingActivity": "More than 2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Moderately active", "energyLevel": "Stable, but not very high", "sleepTime": "Less than 5 hours", "water": "2-6 glasses", "diet": "Keto",
+                "obstacles": ["Health issues", "Unrealistic expectations"], "fitnessLevelScreen": "Advanced", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Regularly", "stairsLevel": "Out of breath after 1-2 flights", "walkingActivity": "More than 2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Moderately active", "energyLevel": "Stable, but not very high", "sleepTime": "Less than 5 hours", "water": "2-6 glasses", "diet": ["Keto"],
                 "badFoodHabits": ["None of the above"], "fitnessLevel": "Intermediate",
                 "obese": { "BMI": "13.6", "BMI_range": "underweight", "somatotype": "ecto-meso mix", "lifestyle": "active", "fitness_level": "intermediate", "metabolism": "moderate" },
                 "referralSource": "Social media ads", "importantEvent": "Reunion", "importantEventDate": "04/08/2026", "personalConfidence": "I’m uncertain, but willing to try!", "email": "hafrealtestmailchb2+test@gmail.com", "name": "NameChair Barre"
@@ -75,7 +73,7 @@
                 "totalScreens": 60, "firstScreenAge": 40, "chairYogaExperienceScreen": "Yes", "goal": "Maintain weight", "driveGoal": ["Improve physical appearance"], "bodyCurrent": "Toned", "bodyTarget": "Toned", "focusZones": ["Upper Body", "Core"],
                 "weightChange": "I gain and lose weight easily", "bestShape": "1 to 2 years ago", "problemAreas": ["Back"], "height": { "value": 180, "selectedUnit": "cm" }, "weightGoalDiff": -37,
                 "currentWeight": { "value": 88, "selectedUnit": "kg" }, "targetWeight": { "value": 55, "selectedUnit": "kg" }, "age": { "value": 33, "selectedUnit": "years" },
-                "obstacles": ["Lack of accountability", "Not sure what to do"], "fitnessLevelScreen": "New to Tai Chi", "flexibilityLevel": "I can touch the floor with my fingertips", "exerciseActivityLevel": "Almost daily", "stairsLevel": "Slightly winded after several flights", "walkingActivity": "1-2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Very active", "energyLevel": "Stable, but not very high", "sleepTime": "Less than 5 hours", "water": "More than 10 glasses", "diet": "Keto",
+                "obstacles": ["Lack of accountability", "Not sure what to do"], "fitnessLevelScreen": "New to Tai Chi", "flexibilityLevel": "I can touch the floor with my fingertips", "exerciseActivityLevel": "Almost daily", "stairsLevel": "Slightly winded after several flights", "walkingActivity": "1-2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Very active", "energyLevel": "Stable, but not very high", "sleepTime": "Less than 5 hours", "water": "More than 10 glasses", "diet": ["None"],
                 "badFoodHabits": ["Skipping meal to often"], "fitnessLevel": "High",
                 "obese": { "BMI": "27.2", "BMI_range": "overweight", "somatotype": "mesomorph", "lifestyle": "active", "fitness_level": "high", "metabolism": "moderate" },
                 "referralSource": "Web search", "importantEvent": "Reunion", "importantEventDate": "04/27/2026", "personalConfidence": "I’m uncertain, but willing to try!", "email": "hafrealtestmailtch2+test@gmail.com", "name": "Tai Chi"
@@ -89,7 +87,7 @@
                 "weightChange": "I gain weight quickly but lose it  slowly", "bestShape": "1 to 2 years ago", "problemAreas": ["Legs", "Back"], "height": { "value": 180, "selectedUnit": "cm" }, "weightGoalDiff": 6,
                 "currentWeight": { "value": 66, "selectedUnit": "kg" }, "targetWeight": { "value": 70, "selectedUnit": "kg" }, "age": { "value": 30, "selectedUnit": "years" },
                 "obstacles": ["Not sure what to do", "Inconsistent routine"], "fitnessLevelScreen": "Intermediate", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Occasionally", "stairsLevel": "Out of breath after 1-2 flights",
-                "walkingActivity": "1-2 hours", "squatsLevel": "13-20", "dailyActivityLevel": "Moderately active", "energyLevel": "Energy fluctuates all day", "sleepTime": "Less than 5 hours", "water": "7-10 glasses", "diet": "Mediterranean",
+                "walkingActivity": "1-2 hours", "squatsLevel": "13-20", "dailyActivityLevel": "Moderately active", "energyLevel": "Energy fluctuates all day", "sleepTime": "Less than 5 hours", "water": "7-10 glasses", "diet": ["Mediterranean","Vegetarian"],
                 "badFoodHabits": ["Skipping meal to often"], "fitnessLevel": "Low",
                 "obese": { "BMI": "20.4", "BMI_range": "healthy", "somatotype": "endomorph", "lifestyle": "moderately active", "fitness_level": "low", "metabolism": "slow", "pilates_level": "low" },
                 "referralSource": "Social media ads", "importantEvent": "Wedding", "personalConfidence": "I’m still really unsure", "email": "hafrealtestmailw1-w2+test@gmail.com", "name": "Name-Wall Pilates"
@@ -315,6 +313,10 @@
 
                 <div class="editor-field">
                     <div class="score-display-wrapper">
+                        <label style="font-size:11px;">Metabolism:</label>
+                        <span id="meta-val" style="color:#98c379;">...</span>
+                    </div>
+                    <div class="score-display-wrapper">
                         <label style="font-size:11px;">Somatotype:</label>
                         <span id="soma-val" style="color:#c678dd;">...</span>
                     </div>
@@ -322,17 +324,13 @@
                         <label style="font-size:11px;">Lifestyle:</label>
                         <span id="life-val" style="color:#61afef;">...</span>
                     </div>
-                    <div class="score-display-wrapper">
-                        <label style="font-size:11px;">Fitness Level:</label>
-                        <span id="fit-level-val" style="color:#e5c07b;">...</span>
-                    </div>
                     <div class="score-display-wrapper" id="prog-level-row" style="display:none;">
                         <label style="font-size:11px;" id="prog-level-label">Prog Level:</label>
                         <span id="prog-level-val" style="color:#61afef;">...</span>
                     </div>
                     <div class="score-display-wrapper">
-                        <label style="font-size:11px;">Metabolism:</label>
-                        <span id="meta-val" style="color:#98c379;">...</span>
+                        <label style="font-size:11px;">Fitness Level:</label>
+                        <span id="fit-level-val" style="color:#e5c07b;">...</span>
                     </div>
                 </div>
             </div>
@@ -454,6 +452,20 @@
                     <button id="discount-expire-btn" class="sandbox-btn danger">Expire Now</button>
                 </div>
             </div>
+
+            <div class="editor-field">
+                <label>Marketing Params:</label>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1">
+                        <button id="add-meta-param" class="sandbox-btn" style="width:100%">Meta Params</button>
+                        <div style="font-size:10px; color:#9da5b4; margin-top:2px; text-align:center;">Pixel: <span id="meta-pixel-id">...</span></div>
+                    </div>
+                    <div style="flex:1">
+                        <button id="add-tiktok-param" class="sandbox-btn" style="width:100%">TikTok Params</button>
+                        <div style="font-size:10px; color:#9da5b4; margin-top:2px; text-align:center;">Pixel: <span id="tiktok-pixel-id">...</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="cookie-editor-footer">
              <div>
@@ -486,6 +498,10 @@
     const jsonHighlighter = panel.querySelector('#json-highlighter');
     const searchPrevBtn = panel.querySelector('#search-prev-btn');
     const searchNextBtn = panel.querySelector('#search-next-btn');
+    const addMetaParamBtn = panel.querySelector('#add-meta-param');
+    const addTikTokParamBtn = panel.querySelector('#add-tiktok-param');
+    const metaPixelIdSpan = panel.querySelector('#meta-pixel-id');
+    const tiktokPixelIdSpan = panel.querySelector('#tiktok-pixel-id');
 
     // Personal UI
     const pHeight = panel.querySelector('#personal-height');
@@ -546,6 +562,40 @@
             result += characters.charAt(Math.floor(Math.random() * characters.length));
         }
         return result;
+    }
+
+    // --- Logic: Marketing Params ---
+    function initMarketingParams() {
+        const hostname = window.location.hostname;
+        const isProd = hostname === 'plan.helloembody.com';
+
+        // Pixel IDs
+        const metaId = isProd ? '1778552282789473' : '716048184868331';
+        const tiktokId = isProd ? 'D46T08JC77U505N92KE0' : 'D429PVRC77UA61AHKL50';
+
+        metaPixelIdSpan.textContent = metaId;
+        tiktokPixelIdSpan.textContent = tiktokId;
+
+        // Button Handlers (No Reload)
+        addMetaParamBtn.addEventListener('click', () => {
+            const url = new URL(window.location.href);
+            url.searchParams.set('utm_source', 'meta');
+            url.searchParams.set('fbclid', generateRandomString(20)); // Random fbclid
+            url.searchParams.delete('ttclid'); // Remove conflicting param
+
+            window.history.replaceState({}, '', url.toString());
+            showStatus('Meta params added (No Reload)');
+        });
+
+        addTikTokParamBtn.addEventListener('click', () => {
+            const url = new URL(window.location.href);
+            url.searchParams.set('utm_source', 'tiktok');
+            url.searchParams.set('ttclid', generateRandomString(20)); // Random ttclid
+            url.searchParams.delete('fbclid'); // Remove conflicting param
+
+            window.history.replaceState({}, '', url.toString());
+            showStatus('TikTok params added (No Reload)');
+        });
     }
 
     // --- Logic: Spoiler Persistence ---
@@ -1188,6 +1238,7 @@
         loadSandboxData();
         loadDiscount();
         renderAgePresets();
+        initMarketingParams();
         restoreSpoilers(); // Restore expanded state
     }
 
