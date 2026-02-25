@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Cookie Editor Pro (Mobile v3.16 - No Reload & Reorder)
+// @name        Cookie Editor
 // @namespace   http://tampermonkey.net/
 // @version     3.16.0
 // @description Added marketing params. Changed quick fill json for updated diet field: changed from string to array
