@@ -1,16 +1,15 @@
 // ==UserScript==
 // @name        Cookie Editor
 // @namespace   http://tampermonkey.net/
-// @version     3.16.0
-// @description Added marketing params. Changed quick fill json for updated diet field: changed from string to array
+// @version     3.29.0
+// @description Removed default feature flags auto-population from Quick Fill button. (Updated Emails)
 // @author      Bohdan S.
 // @match       https://haf-frontend.dev.prokit.me/*
 // @match       https://haf-frontend.dev2.prokit.me/*
 // @match       https://haf-frontend.stage.prokit.me/*
 // @match       https://plan.helloembody.com/*
+// @match       https://localhost* 
 // @grant       GM_addStyle
-// @updateURL   https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js
-// @downloadURL https://raw.githubusercontent.com/qa-embody/Cookie-Editor/main/cookie-editor.user.js
 // @license     MIT
 // ==/UserScript==
 
@@ -24,13 +23,13 @@
             personalSpoiler: 'cookieEditor_personalSpoilerOpen',
             scoreSpoiler: 'cookieEditor_scoreSpoilerOpen'
         },
-        specialFunnels: ['w1f123r', 'w2f123r', 'c1f23r', 'chb2f23r', 'c2f23r', 'tch2f23r'],
+        specialFunnels: ['w1f123r', 'w2f123r', 'w3f123r', 'w4f123r', 'c1f23r', 'chb2f23r', 'c2f23r', 'tch2f23r'],
 
         // --- JSON TEMPLATES ---
         defaultQuickFillJson: {
-            "activeTab": 44, "funnelId": "f1f123r", "prevTab": null, "progress": 0, "selectedAge": 18, "selectedAgeValue": "18-29", "screensCount": 46, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
+            "activeTab": 43, "funnelId": "f1f123r", "prevTab": null, "progress": 0, "selectedAge": 18, "selectedAgeValue": "18-29", "screensCount": 45, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
             "personalInfo": {
-                "totalScreens": 46, "firstScreenAge": 18, "goal": "Tone & sculpt", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Total Body"],
+                "totalScreens": 45, "firstScreenAge": 18, "goal": "Tone & sculpt", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Total Body"],
                 "weightChange": "I gain and lose weight easily", "bestShape": "1 to 2 years ago", "problemAreas": ["I have no issues"], "height": { "value": 150, "selectedUnit": "cm" }, "weightGoalDiff": 25,
                 "currentWeight": { "value": 44, "selectedUnit": "kg" }, "targetWeight": { "value": 55, "selectedUnit": "kg" }, "age": { "value": 33, "selectedUnit": "years" },
                 "obstacles": ["Health issues", "Stress or other life factors"], "workoutType": ["Chair Barre", "Wall Pilates"], "workoutPreferences": ["All lying exercises"],
@@ -38,61 +37,61 @@
                 "walkingActivity": "Less than 1 hour", "squatsLevel": "Fewer 12", "dailyActivityLevel": "Mostly sedentary", "energyLevel": "Low, tired most of the day", "sleepTime": "Less than 5 hours", "water": "About 2 glasses", "diet": ["Mediterranean","Vegetarian"],
                 "badFoodHabits": ["Overeating"], "fitnessLevel": "Low",
                 "obese": { "BMI": "19.6", "BMI_range": "healthy", "somatotype": "mesomorph", "lifestyle": "sedentary", "fitness_level": "low", "metabolism": "moderate" },
-                "importantEvent": "Other", "email": "hafrealtestmailf1+test@gmail.com", "name": "flex"
+                "importantEvent": "Other", "email": "hafrealtestmailf1+test@gmail.com", "name": "flex", "upperBodyFlexibility": "My fingertips can touch", "kneePushUpsLevel": "11-20"
             },
             "checkoutFail": null, "checkoutPayment": null, "measurementSystem": "metric", "bmi": 19.555555555555557, "programType": "fitness"
         },
         chairYogaJson: {
-            "activeTab": 58, "funnelId": "c1f23r", "prevTab": null, "progress": 0, "selectedAge": 40, "selectedAgeValue": "40-49", "screensCount": 60, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
+            "activeTab": 50, "funnelId": "c1f23r", "prevTab": null, "progress": 0, "selectedAge": 40, "selectedAgeValue": "40-49", "screensCount": 52, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
             "personalInfo": {
-                "totalScreens": 60, "firstScreenAge": 40, "chairYogaExperienceScreen": "Yes", "goal": "Tone & sculpt", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Upper Body"],
+                "totalScreens": 52, "firstScreenAge": 40, "chairYogaExperienceScreen": "Yes", "goal": "Tone & sculpt", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Upper Body"],
                 "weightChange": "I gain weight quickly but lose it slowly", "bestShape": "More than 3 years ago", "problemAreas": ["Legs"], "height": { "value": 150, "selectedUnit": "cm" }, "weightGoalDiff": 25,
                 "currentWeight": { "value": 44, "selectedUnit": "kg" }, "targetWeight": { "value": 55, "selectedUnit": "kg" }, "age": { "value": 66, "selectedUnit": "years" },
                 "obstacles": ["Health issues"], "fitnessLevelScreen": "Advanced", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Regularly", "stairsLevel": "Out of breath after 1-2 flights",
                 "walkingActivity": "More than 2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Moderately active", "energyLevel": "High and consistent all day", "sleepTime": "Less than 5 hours", "water": "More than 10 glasses", "diet": ["None"],
                 "badFoodHabits": ["Skipping meal to often"], "fitnessLevel": "Intermediate",
                 "obese": { "BMI": "19.6", "BMI_range": "healthy", "somatotype": "endomorph", "lifestyle": "active", "fitness_level": "intermediate", "metabolism": "slow" },
-                "referralSource": "Coach", "importantEvent": "Wedding", "importantEventDate": "03/22/2026", "personalConfidence": "I’m still really unsure", "email": "hafrealtestmailc1+test@gmail.com", "name": "Chair Yoga"
+                "referralSource": "Coach", "importantEvent": "Wedding", "importantEventDate": "03/22/2026", "personalConfidence": "I’m still really unsure", "email": "hafrealtestmailc1+test@gmail.com", "name": "Chair Yoga", "upperBodyFlexibility": "My fingers can overlap or clasp together", "kneePushUpsLevel": "Haven’t tried"
             },
             "checkoutFail": null, "checkoutPayment": null, "measurementSystem": "metric", "bmi": 19.555555555555557, "programType": "yoga"
         },
         chairBarreJson: {
-            "activeTab": 58, "funnelId": "chb2f23r", "prevTab": null, "progress": 0, "selectedAge": 50, "selectedAgeValue": "50-59", "screensCount": 60, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
+            "activeTab": 50, "funnelId": "chb2f23r", "prevTab": null, "progress": 0, "selectedAge": 50, "selectedAgeValue": "50-59", "screensCount": 52, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
             "personalInfo": {
-                "totalScreens": 60, "firstScreenAge": 50, "chairYogaExperienceScreen": "Yes", "goal": "Maintain weight", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Total Body"],
+                "totalScreens": 52, "firstScreenAge": 50, "chairYogaExperienceScreen": "Yes", "goal": "Maintain weight", "driveGoal": ["Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Balanced", "focusZones": ["Total Body"],
                 "weightChange": "I gain and lose weight easily", "bestShape": "1 to 2 years ago", "problemAreas": ["Legs", "Back", "Arms", "Neck"], "height": { "value": 180, "selectedUnit": "cm" }, "weightGoalDiff": 11,
                 "currentWeight": { "value": 44, "selectedUnit": "kg" }, "targetWeight": { "value": 49, "selectedUnit": "kg" }, "age": { "value": 55, "selectedUnit": "years" },
                 "obstacles": ["Health issues", "Unrealistic expectations"], "fitnessLevelScreen": "Advanced", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Regularly", "stairsLevel": "Out of breath after 1-2 flights", "walkingActivity": "More than 2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Moderately active", "energyLevel": "Stable, but not very high", "sleepTime": "Less than 5 hours", "water": "2-6 glasses", "diet": ["Keto"],
                 "badFoodHabits": ["None of the above"], "fitnessLevel": "Intermediate",
                 "obese": { "BMI": "13.6", "BMI_range": "underweight", "somatotype": "ecto-meso mix", "lifestyle": "active", "fitness_level": "intermediate", "metabolism": "moderate" },
-                "referralSource": "Social media ads", "importantEvent": "Reunion", "importantEventDate": "04/08/2026", "personalConfidence": "I’m uncertain, but willing to try!", "email": "hafrealtestmailchb2+test@gmail.com", "name": "NameChair Barre"
+                "referralSource": "Social media ads", "importantEvent": "Reunion", "importantEventDate": "04/08/2026", "personalConfidence": "I’m uncertain, but willing to try!", "email": "hafrealtestmailchb2+test@gmail.com", "name": "NameChair Barre", "upperBodyFlexibility": "My hands are far apart, can't reach or touch", "kneePushUpsLevel": "More than 20"
             },
             "checkoutFail": null, "checkoutPayment": null, "measurementSystem": "metric", "bmi": 13.580246913580247, "programType": "barre", "weightGoalDiff": 11
         },
         taiChiJson: {
-            "activeTab": 58, "funnelId": "tch2f23r", "prevTab": "chairYogaExperienceScreen", "progress": 0, "selectedAge": 40, "selectedAgeValue": "40-49", "screensCount": 60, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
+            "activeTab": 50, "funnelId": "tch2f23r", "prevTab": "chairYogaExperienceScreen", "progress": 0, "selectedAge": 40, "selectedAgeValue": "40-49", "screensCount": 52, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
             "personalInfo": {
-                "totalScreens": 60, "firstScreenAge": 40, "chairYogaExperienceScreen": "Yes", "goal": "Maintain weight", "driveGoal": ["Improve physical appearance"], "bodyCurrent": "Toned", "bodyTarget": "Toned", "focusZones": ["Upper Body", "Core"],
+                "totalScreens": 52, "firstScreenAge": 40, "chairYogaExperienceScreen": "Yes", "goal": "Maintain weight", "driveGoal": ["Improve physical appearance"], "bodyCurrent": "Toned", "bodyTarget": "Toned", "focusZones": ["Upper Body", "Core"],
                 "weightChange": "I gain and lose weight easily", "bestShape": "1 to 2 years ago", "problemAreas": ["Back"], "height": { "value": 180, "selectedUnit": "cm" }, "weightGoalDiff": -37,
                 "currentWeight": { "value": 88, "selectedUnit": "kg" }, "targetWeight": { "value": 55, "selectedUnit": "kg" }, "age": { "value": 33, "selectedUnit": "years" },
                 "obstacles": ["Lack of accountability", "Not sure what to do"], "fitnessLevelScreen": "New to Tai Chi", "flexibilityLevel": "I can touch the floor with my fingertips", "exerciseActivityLevel": "Almost daily", "stairsLevel": "Slightly winded after several flights", "walkingActivity": "1-2 hours", "squatsLevel": "More than 20", "dailyActivityLevel": "Very active", "energyLevel": "Stable, but not very high", "sleepTime": "Less than 5 hours", "water": "More than 10 glasses", "diet": ["None"],
                 "badFoodHabits": ["Skipping meal to often"], "fitnessLevel": "High",
                 "obese": { "BMI": "27.2", "BMI_range": "overweight", "somatotype": "mesomorph", "lifestyle": "active", "fitness_level": "high", "metabolism": "moderate" },
-                "referralSource": "Web search", "importantEvent": "Reunion", "importantEventDate": "04/27/2026", "personalConfidence": "I’m uncertain, but willing to try!", "email": "hafrealtestmailtch2+test@gmail.com", "name": "Tai Chi"
+                "referralSource": "Web search", "importantEvent": "Reunion", "importantEventDate": "04/27/2026", "personalConfidence": "I’m uncertain, but willing to try!", "email": "hafrealtestmailtch2+test@gmail.com", "name": "Tai Chi", "upperBodyFlexibility": "My fingers can overlap or clasp together", "kneePushUpsLevel": "More than 20"
             },
             "checkoutFail": null, "checkoutPayment": null, "measurementSystem": "metric", "bmi": 27.160493827160494, "programType": "taichi", "weightGoalDiff": -37
         },
         wallPilatesJson: {
-            "activeTab": 58, "funnelId": "w2f123r", "prevTab": null, "progress": 0, "selectedAge": 30, "selectedAgeValue": "30-39", "screensCount": 60, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
+            "activeTab": 50, "funnelId": "w2f123r", "prevTab": null, "progress": 0, "selectedAge": 30, "selectedAgeValue": "30-39", "screensCount": 52, "unitsOfMeasurement": "kg", "paywallStatus": null, "selectedPlan": null,
             "personalInfo": {
-                "totalScreens": 60, "firstScreenAge": 30, "wallPilatesExperienceScreen": "Yes", "goal": "Tone & sculpt", "driveGoal": ["Alleviate body aches", "Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Toned", "focusZones": ["Core", "Upper Body"],
+                "totalScreens": 52, "firstScreenAge": 30, "wallPilatesExperienceScreen": "Yes", "goal": "Tone & sculpt", "driveGoal": ["Alleviate body aches", "Reduce stress & anxiety"], "bodyCurrent": "Medium Build", "bodyTarget": "Toned", "focusZones": ["Core", "Upper Body"],
                 "weightChange": "I gain weight quickly but lose it  slowly", "bestShape": "1 to 2 years ago", "problemAreas": ["Legs", "Back"], "height": { "value": 180, "selectedUnit": "cm" }, "weightGoalDiff": 6,
                 "currentWeight": { "value": 66, "selectedUnit": "kg" }, "targetWeight": { "value": 70, "selectedUnit": "kg" }, "age": { "value": 30, "selectedUnit": "years" },
                 "obstacles": ["Not sure what to do", "Inconsistent routine"], "fitnessLevelScreen": "Intermediate", "flexibilityLevel": "I can place my palms flat on the floor", "exerciseActivityLevel": "Occasionally", "stairsLevel": "Out of breath after 1-2 flights",
                 "walkingActivity": "1-2 hours", "squatsLevel": "13-20", "dailyActivityLevel": "Moderately active", "energyLevel": "Energy fluctuates all day", "sleepTime": "Less than 5 hours", "water": "7-10 glasses", "diet": ["Mediterranean","Vegetarian"],
                 "badFoodHabits": ["Skipping meal to often"], "fitnessLevel": "Low",
                 "obese": { "BMI": "20.4", "BMI_range": "healthy", "somatotype": "endomorph", "lifestyle": "moderately active", "fitness_level": "low", "metabolism": "slow", "pilates_level": "low" },
-                "referralSource": "Social media ads", "importantEvent": "Wedding", "personalConfidence": "I’m still really unsure", "email": "hafrealtestmailw1-w2+test@gmail.com", "name": "Name-Wall Pilates"
+                "referralSource": "Social media ads", "importantEvent": "Wedding", "personalConfidence": "I’m still really unsure", "email": "hafrealtestmailw1-w2+test@gmail.com", "name": "Name-Wall Pilates", "upperBodyFlexibility": "My hands get close, a few inches apart", "kneePushUpsLevel": "Fewer 4"
             },
             "checkoutFail": null, "checkoutPayment": null, "measurementSystem": "metric", "bmi": 20.37037037037037, "programType": "pilates"
         }
@@ -104,7 +103,7 @@
     const fitnessWeights = { exercise: 0.5, squats: 1.0, stairs: 1.0 };
 
     const scoreMaps = {
-        exerciseActivityLevel: { "I haven’t started yet": 0, "Occasionally": 0.2, "Regularly": 0.5, "Often": 0.8, "Almost daily": 1 },
+        exerciseActivityLevel: { "I haven’t exercised for a long time": 0, "Occasionally": 0.2, "Regularly": 0.5, "Often": 0.8, "Almost daily": 1 },
         stairsLevel: { "Out of breath after few steps": 0, "Out of breath after 1-2 flights": 0.4, "Slightly winded after several flights": 0.6, "Fine, no issues": 1 },
         squatsLevel: { "Fewer 12": 0, "13-20": 0.55, "More than 20": 1, "I don't know": 0 }
     };
@@ -120,66 +119,66 @@
         "Overweight": "40%"
     };
 
-    // --- Styles ---
+    // --- Styles (NARROW + COMPACT) ---
     GM_addStyle(`
-        #cookie-editor-panel { position: fixed; top: 70px; left: 10px; width: 90vw; max-width: 400px; max-height: 85vh; background-color: rgba(40, 44, 52, 0.98); backdrop-filter: blur(5px); color: #abb2bf; border: 1px solid #4f5b66; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); z-index: 2147483647; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; display: flex; flex-direction: column; overflow: hidden; }
-        #cookie-editor-panel.collapsed { height: 42px !important; width: 180px; }
-        #cookie-editor-header { background-color: rgba(60, 64, 73, 1); padding: 0 10px; height: 40px; cursor: move; border-bottom: 1px solid #4f5b66; display: flex; justify-content: space-between; align-items: center; user-select: none; flex-shrink: 0; }
-        #cookie-editor-header-title-group { display: flex; flex-direction: row; align-items: center; gap: 8px; overflow: hidden; white-space: nowrap; flex: 1; }
-        #cookie-editor-header h3 { margin: 0; font-size: 14px; font-weight: 600; color: #ffffff; line-height: 1; }
-        #status-message { font-size: 11px; color: #98c379; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: normal; opacity: 0; transition: opacity 0.3s; max-width: 120px; }
-        #cookie-editor-controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; height: 100%; }
-        #cookie-editor-controls button { background: none; border: none; color: #abb2bf; font-size: 20px; cursor: pointer; line-height: 1; padding: 0; display: flex; align-items: center; justify-content: center; height: 100%; width: 20px; }
+        #cookie-editor-panel { position: fixed; top: 70px; left: 10px; width: 90vw; max-width: 330px; max-height: 85vh; background-color: rgba(40, 44, 52, 0.98); backdrop-filter: blur(5px); color: #abb2bf; border: 1px solid #4f5b66; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); z-index: 2147483647; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; display: flex; flex-direction: column; overflow: hidden; }
+        #cookie-editor-panel.collapsed { height: 32px !important; width: 130px; }
+        #cookie-editor-header { background-color: rgba(60, 64, 73, 1); padding: 0 8px; height: 32px; cursor: move; border-bottom: 1px solid #4f5b66; display: flex; justify-content: space-between; align-items: center; user-select: none; flex-shrink: 0; }
+        #cookie-editor-header-title-group { display: flex; flex-direction: row; align-items: center; gap: 6px; overflow: hidden; white-space: nowrap; flex: 1; }
+        #cookie-editor-header h3 { margin: 0; font-size: 13px; font-weight: 600; color: #ffffff; line-height: 1; }
+        #status-message { font-size: 10px; color: #98c379; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: normal; opacity: 0; transition: opacity 0.3s; max-width: 100px; }
+        #cookie-editor-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; height: 100%; }
+        #cookie-editor-controls button { background: none; border: none; color: #abb2bf; font-size: 18px; cursor: pointer; line-height: 1; padding: 0; display: flex; align-items: center; justify-content: center; height: 100%; width: 20px; }
         #cookie-editor-controls button:hover { color: #ffffff; }
-        #cookie-editor-content { padding: 12px; overflow-y: auto; flex-grow: 1; -webkit-overflow-scrolling: touch; }
-        .editor-field { margin-bottom: 12px; }
-        .editor-field label { display: block; margin-bottom: 5px; font-weight: 500; color: #9da5b4; font-size: 12px; }
-        .editor-field input, .editor-field textarea { width: 100%; padding: 8px; background-color: #21252b; border: 1px solid #4f5b66; border-radius: 4px; color: #abb2bf; font-size: 13px; box-sizing: border-box; }
+        #cookie-editor-content { padding: 8px; overflow-y: auto; flex-grow: 1; -webkit-overflow-scrolling: touch; }
+        .editor-field { margin-bottom: 8px; }
+        .editor-field label { display: block; margin-bottom: 2px; font-weight: 500; color: #9da5b4; font-size: 11px; }
+        .editor-field input, .editor-field textarea { width: 100%; padding: 4px 6px; background-color: #21252b; border: 1px solid #4f5b66; border-radius: 4px; color: #abb2bf; font-size: 12px; box-sizing: border-box; }
         .editor-field input:focus, .editor-field textarea:focus { outline: none; border-color: #61afef; }
-        .editor-field textarea { min-height: 120px; resize: vertical; font-family: monospace; line-height: 1.4; }
-        #cookie-editor-footer { padding: 12px; border-top: 1px solid #4f5b66; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        #cookie-editor-footer > div { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        button.action-btn { border: none; padding: 10px 14px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 13px; transition: background-color 0.2s; }
+        .editor-field textarea { min-height: 80px; resize: vertical; font-family: monospace; line-height: 1.3; }
+        #cookie-editor-footer { padding: 8px; border-top: 1px solid #4f5b66; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+        #cookie-editor-footer > div { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        button.action-btn { border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; transition: background-color 0.2s; }
         #save-cookie-btn { background-color: #61afef; color: #282c34; }
         #quick-fill-btn { background-color: #4f5b66; color: #abb2bf; }
         #clear-site-data-btn { background-color: #e06c75; color: #282c34; }
-        .sandbox-btn { flex: 1; background-color: #4f5b66; color: #abb2bf; border: none; padding: 8px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 12px; }
+        .sandbox-btn { flex: 1; background-color: #4f5b66; color: #abb2bf; border: none; padding: 4px 6px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 10px; white-space: nowrap;}
         .sandbox-btn.danger { background-color: #e06c75; color: #282c34; }
         .activate-btn { background-color: #98c379 !important; color: #282c34 !important; }
 
         .json-search-container { position: relative; }
-        #json-highlighter { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 8px; box-sizing: border-box; color: transparent; overflow: auto; pointer-events: none; white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 13px; line-height: 1.4; z-index: 1; border: 1px solid transparent; }
+        #json-highlighter { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 4px 6px; box-sizing: border-box; color: transparent; overflow: auto; pointer-events: none; white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 12px; line-height: 1.3; z-index: 1; border: 1px solid transparent; }
         #json-data-area { background: transparent; position: relative; z-index: 2; caret-color: #abb2bf; }
         #json-highlighter .highlight { background-color: rgba(229, 192, 123, 0.5); border-radius: 2px; }
         #json-highlighter .highlight.active { background-color: rgba(152, 195, 121, 0.7); }
-        #json-search-input { width: calc(100% - 110px); margin-bottom: 5px; display: inline-block; padding: 8px; }
-        .search-nav-btn { background: #4f5b66; border: none; color: #abb2bf; cursor: pointer; border-radius: 3px; width: 30px; height: 30px; line-height: 28px; padding: 0; margin-left: 4px; vertical-align: middle; }
-        #json-search-status { display: inline-block; width: 55px; text-align: right; color: #9da5b4; font-size: 11px; vertical-align: middle; }
+        #json-search-input { width: calc(100% - 90px); margin-bottom: 4px; display: inline-block; padding: 4px 6px; }
+        .search-nav-btn { background: #4f5b66; border: none; color: #abb2bf; cursor: pointer; border-radius: 3px; width: 24px; height: 24px; line-height: 22px; padding: 0; margin-left: 2px; vertical-align: middle; }
+        #json-search-status { display: inline-block; width: 45px; text-align: right; color: #9da5b4; font-size: 10px; vertical-align: middle; }
 
         /* SCORE & PERSONAL SPOILERS */
-        .spoiler-header { padding: 8px; background-color: #21252b; border-radius: 4px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border: 1px solid #4f5b66; }
-        .spoiler-header label { font-size: 12px; font-weight: 500; color: #9da5b4; margin: 0; cursor: pointer; }
-        .spoiler-toggle { font-size: 14px; font-weight: bold; color: #61afef; user-select: none; }
-        .spoiler-content { display: none; padding-left: 5px; border-left: 2px solid #4f5b66; margin-bottom: 15px; }
+        .spoiler-header { padding: 6px; background-color: #21252b; border-radius: 4px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; border: 1px solid #4f5b66; }
+        .spoiler-header label { font-size: 11px; font-weight: 500; color: #9da5b4; margin: 0; cursor: pointer; }
+        .spoiler-toggle { font-size: 12px; font-weight: bold; color: #61afef; user-select: none; }
+        .spoiler-content { display: none; padding-left: 5px; border-left: 2px solid #4f5b66; margin-bottom: 8px; }
 
         /* PERSONAL STATS UI */
-        .personal-row { display: flex; gap: 8px; align-items: stretch; margin-bottom: 8px; flex-wrap: nowrap; }
+        .personal-row { display: flex; gap: 4px; align-items: stretch; margin-bottom: 4px; flex-wrap: nowrap; }
         .mini-input-group { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
-        .mini-input-group label { margin-bottom: 2px; font-size: 10px; display: block; text-align: left; }
-        .mini-input-group input { width: 100%; text-align: center; color: #ffffff !important; font-weight: bold; padding: 6px; }
+        .mini-input-group label { margin-bottom: 1px; font-size: 9px; display: block; text-align: left; }
+        .mini-input-group input { width: 100%; text-align: center; color: #ffffff !important; font-weight: bold; padding: 4px; }
         /* BMI Styling aligned */
-        #personal-bmi-value { font-size: 14px; font-weight: bold; color: #e5c07b; padding: 6px 5px; display: block; text-align: center; line-height: 1.2; height: 100%; box-sizing: border-box; }
+        #personal-bmi-value { font-size: 13px; font-weight: bold; color: #e5c07b; padding: 4px; display: block; text-align: center; line-height: 1.2; height: 100%; box-sizing: border-box; }
 
-        .score-button-group { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-        .score-set-btn { background-color: #4f5b66; color: #abb2bf; border: 1px solid #5a6470; border-radius: 3px; padding: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s; font-weight: bold; flex-grow: 1; text-align: center; }
+        .score-button-group { display: flex; gap: 2px; flex-wrap: wrap; justify-content: flex-start; }
+        .score-set-btn { background-color: #4f5b66; color: #abb2bf; border: 1px solid #5a6470; border-radius: 3px; padding: 4px; font-size: 10px; cursor: pointer; transition: all 0.2s; font-weight: bold; flex-grow: 1; text-align: center; }
         .score-set-btn:hover { background-color: #5a6470; border-color: #61afef; color: #ffffff; }
 
-        .score-display-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 6px; background-color: #21252b; border-radius: 4px; margin-bottom: 4px; }
-        .score-display-wrapper span { font-size: 13px; font-weight: bold; }
-        .score-breakdown { font-size: 11px; color: #9da5b4; background-color: #2c313a; border-radius: 4px; padding: 6px; margin-top: 4px; display: none; line-height: 1.4; }
-        #fitness-score-breakdown .score-display-wrapper { padding: 0; background: none; margin-top: 5px; }
-        #fitness-score-breakdown .score-display-wrapper span { font-size: 11px; font-weight: normal; }
-        #plan-score-formula, #fitness-score-formula { font-size: 11px; color: #9da5b4; display: block; margin-top: 4px; font-weight: normal; word-wrap: break-word; }
+        .score-display-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 4px; background-color: #21252b; border-radius: 4px; margin-bottom: 2px; }
+        .score-display-wrapper span { font-size: 11px; font-weight: bold; }
+        .score-breakdown { font-size: 10px; color: #9da5b4; background-color: #2c313a; border-radius: 4px; padding: 4px; margin-top: 2px; display: none; line-height: 1.3; }
+        #fitness-score-breakdown .score-display-wrapper { padding: 0; background: none; margin-top: 4px; }
+        #fitness-score-breakdown .score-display-wrapper span { font-size: 10px; font-weight: normal; }
+        #plan-score-formula, #fitness-score-formula { font-size: 10px; color: #9da5b4; display: block; margin-top: 2px; font-weight: normal; word-wrap: break-word; }
         #assigned-plan-value { color: #61afef; font-weight: bold; }
 
         button:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -201,13 +200,31 @@
         </div>
         <div id="cookie-editor-content">
             <div class="editor-field">
-                <label for="active-tab-input">activeTab:</label>
-                <input type="number" id="active-tab-input" placeholder="e.g., 44">
+                <label>Set Funnel (URL):</label>
+                <div class="score-button-group">
+                    <button class="score-set-btn funnel-set-btn" data-funnel="f1f123r">f1</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="w1f123r">w1</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="w2f123r">w2</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="w3f123r">w3</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="w4f123r">w4</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="c1f23r">c1</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="c2f23r">c2</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="chb2f23r">chb2</button>
+                    <button class="score-set-btn funnel-set-btn" data-funnel="tch2f23r">tch2</button>
+                </div>
             </div>
-             <div class="editor-field">
-                <label for="email-input">Email (personalInfo.email):</label>
-                <input type="email" id="email-input" placeholder="e.g., test@example.com">
+
+            <div class="editor-field" style="display:flex; gap:4px;">
+                <div style="flex:1;">
+                    <label for="active-tab-input">activeTab:</label>
+                    <input type="number" id="active-tab-input" placeholder="e.g., 44">
+                </div>
+                <div style="flex:3;">
+                    <label for="email-input">Email (personalInfo.email):</label>
+                    <input type="email" id="email-input" placeholder="e.g., test@example.com">
+                </div>
             </div>
+
             <div class="editor-field">
                 <label for="json-data-area">Full Value (JSON):</label>
                 <div>
@@ -250,9 +267,9 @@
                     </div>
                 </div>
 
-                <div class="score-display-wrapper" style="margin-bottom:8px;">
-                    <label style="font-size:11px; display:block;">Goal Msg:</label>
-                    <span id="goal-msg-val" style="color:#ffffff; font-weight:normal; font-size:11px;">...</span>
+                <div class="score-display-wrapper" style="margin-bottom:6px;">
+                    <label style="font-size:10px; display:block;">Goal Msg:</label>
+                    <span id="goal-msg-val" style="color:#ffffff; font-weight:normal; font-size:10px;">...</span>
                 </div>
 
                 <div class="editor-field">
@@ -263,9 +280,9 @@
                 <div class="editor-field">
                     <label>Weight Change:</label>
                     <div class="score-display-wrapper">
-                        <span id="val-weight-change" style="font-size:11px; font-weight:normal; max-width:60%; overflow:hidden; text-overflow:ellipsis;">...</span>
+                        <span id="val-weight-change" style="font-size:10px; font-weight:normal; max-width:60%; overflow:hidden; text-overflow:ellipsis;">...</span>
                     </div>
-                    <div class="score-button-group">
+                    <div class="score-button-group" style="justify-content: flex-end;">
                         <button class="score-set-btn" data-key="weightChange" data-value="I gain and lose weight easily">Gain/Lose Easy</button>
                         <button class="score-set-btn" data-key="weightChange" data-value="I struggle to gain weight and <br> muscle">Struggle Gain</button>
                         <button class="score-set-btn" data-key="weightChange" data-value="I gain weight quickly but lose it <br> slowly">Gain Quick/Lose Slow</button>
@@ -276,9 +293,9 @@
                     <label>Body Fat (bodyCurrent):</label>
                     <div class="score-display-wrapper">
                         <span id="val-body-current" style="color: #61afef;">...</span>
-                        <span id="val-fat-percent" style="color: #e5c07b; font-size:11px;"></span>
+                        <span id="val-fat-percent" style="color: #e5c07b; font-size:10px;"></span>
                     </div>
-                    <div class="score-button-group">
+                    <div class="score-button-group" style="justify-content: flex-end;">
                         <button class="score-set-btn" data-key="bodyCurrent" data-value="Toned">Toned</button>
                         <button class="score-set-btn" data-key="bodyCurrent" data-value="Slim">Slim</button>
                         <button class="score-set-btn" data-key="bodyCurrent" data-value="Medium Build">Medium</button>
@@ -290,9 +307,9 @@
                 <div class="editor-field">
                     <label>Daily Activity:</label>
                     <div class="score-display-wrapper">
-                        <span id="val-daily-activity" style="font-size:11px; font-weight:normal;">...</span>
+                        <span id="val-daily-activity" style="font-size:10px; font-weight:normal;">...</span>
                     </div>
-                    <div class="score-button-group">
+                    <div class="score-button-group" style="justify-content: flex-end;">
                         <button class="score-set-btn" data-key="dailyActivityLevel" data-value="Mostly sedentary">Sedentary</button>
                         <button class="score-set-btn" data-key="dailyActivityLevel" data-value="Lightly active">Light</button>
                         <button class="score-set-btn" data-key="dailyActivityLevel" data-value="Moderately active">Mod</button>
@@ -304,9 +321,9 @@
                 <div class="editor-field">
                     <label>Walking Activity:</label>
                     <div class="score-display-wrapper">
-                        <span id="val-walking-activity" style="font-size:11px; font-weight:normal;">...</span>
+                        <span id="val-walking-activity" style="font-size:10px; font-weight:normal;">...</span>
                     </div>
-                    <div class="score-button-group">
+                    <div class="score-button-group" style="justify-content: flex-end;">
                         <button class="score-set-btn" data-key="walkingActivity" data-value="Less than 1 hour">&lt; 1hr</button>
                         <button class="score-set-btn" data-key="walkingActivity" data-value="1-2 hours">1-2hr</button>
                         <button class="score-set-btn" data-key="walkingActivity" data-value="More than 2 hours">&gt; 2hr</button>
@@ -315,23 +332,23 @@
 
                 <div class="editor-field">
                     <div class="score-display-wrapper">
-                        <label style="font-size:11px;">Metabolism:</label>
+                        <label style="font-size:10px;">Metabolism:</label>
                         <span id="meta-val" style="color:#98c379;">...</span>
                     </div>
                     <div class="score-display-wrapper">
-                        <label style="font-size:11px;">Somatotype:</label>
+                        <label style="font-size:10px;">Somatotype:</label>
                         <span id="soma-val" style="color:#c678dd;">...</span>
                     </div>
                     <div class="score-display-wrapper">
-                        <label style="font-size:11px;">Lifestyle:</label>
+                        <label style="font-size:10px;">Lifestyle:</label>
                         <span id="life-val" style="color:#61afef;">...</span>
                     </div>
                     <div class="score-display-wrapper" id="prog-level-row" style="display:none;">
-                        <label style="font-size:11px;" id="prog-level-label">Prog Level:</label>
+                        <label style="font-size:10px;" id="prog-level-label">Prog Level:</label>
                         <span id="prog-level-val" style="color:#61afef;">...</span>
                     </div>
                     <div class="score-display-wrapper">
-                        <label style="font-size:11px;">Fitness Level:</label>
+                        <label style="font-size:10px;">Fitness Level:</label>
                         <span id="fit-level-val" style="color:#e5c07b;">...</span>
                     </div>
                 </div>
@@ -346,7 +363,7 @@
                     <label>💯Flexibility score:</label>
                     <div id="flexibility-score-status" class="score-display-wrapper">
                         <span id="flexibility-score-value" style="color: #e5c07b;">N/A</span>
-                        <div class="score-button-group" id="flex-btn-group">
+                        <div class="score-button-group" id="flex-btn-group" style="justify-content: flex-end;">
                             <button class="score-set-btn" data-key="flexibilityLevel" data-value="I can’t reach the floor" title="0">0</button>
                             <button class="score-set-btn" data-key="flexibilityLevel" data-value="I can touch the floor with my fingertips" title="0.55">0.55</button>
                             <button class="score-set-btn" data-key="flexibilityLevel" data-value="I can place my palms flat on the floor" title="1">1</button>
@@ -359,7 +376,7 @@
                     <label>💯yoga/pilates score:</label>
                     <div id="yoga-pilates-score-status" class="score-display-wrapper">
                         <span id="yoga-pilates-score-value" style="color: #c678dd;">N/A</span>
-                        <div class="score-button-group" id="yoga-btn-group">
+                        <div class="score-button-group" id="yoga-btn-group" style="justify-content: flex-end;">
                             <button class="score-set-btn" data-key="fitnessLevelScreen" data-value="New to yoga" title="0">0</button>
                             <button class="score-set-btn" data-key="fitnessLevelScreen" data-value="Beginner" title="0.4">0.4</button>
                             <button class="score-set-btn" data-key="fitnessLevelScreen" data-value="Intermediate" title="0.6">0.6</button>
@@ -371,18 +388,18 @@
 
                 <div class="editor-field">
                     <label>Fitness Level:</label>
-                    <div id="fitness-score-status" style="padding: 6px; background-color: #21252b; border-radius: 4px;">
+                    <div id="fitness-score-status" style="padding: 4px; background-color: #21252b; border-radius: 4px;">
                          <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span id="fitness-score-value" style="font-size: 13px; font-weight: bold; color: #98c379;">N/A</span>
-                            <span id="fitness-score-label" style="font-size: 11px; color: #e5c07b; font-weight: normal;"></span>
+                            <span id="fitness-score-value" style="font-size: 12px; font-weight: bold; color: #98c379;">N/A</span>
+                            <span id="fitness-score-label" style="font-size: 10px; color: #e5c07b; font-weight: normal;"></span>
                         </div>
                         <span id="fitness-score-formula">(Calculation requires valid data)</span>
                     </div>
-                    <div id="fitness-score-breakdown" class="score-breakdown" style="line-height: 1.4;">
+                    <div id="fitness-score-breakdown" class="score-breakdown" style="line-height: 1.3;">
                         <div class="score-display-wrapper">
                             <span id="score-exercise">Ex: 0</span>
-                            <div class="score-button-group">
-                                <button class="score-set-btn" data-key="exerciseActivityLevel" data-value="I haven’t started yet">0</button>
+                            <div class="score-button-group" style="justify-content: flex-end;">
+                                <button class="score-set-btn" data-key="exerciseActivityLevel" data-value="I haven’t exercised for a long time">0</button>
                                 <button class="score-set-btn" data-key="exerciseActivityLevel" data-value="Occasionally">0.2</button>
                                 <button class="score-set-btn" data-key="exerciseActivityLevel" data-value="Regularly">0.5</button>
                                 <button class="score-set-btn" data-key="exerciseActivityLevel" data-value="Often">0.8</button>
@@ -391,7 +408,7 @@
                         </div>
                         <div class="score-display-wrapper">
                             <span id="score-stairs">St: 0</span>
-                            <div class="score-button-group">
+                            <div class="score-button-group" style="justify-content: flex-end;">
                                 <button class="score-set-btn" data-key="stairsLevel" data-value="Out of breath after few steps">0</button>
                                 <button class="score-set-btn" data-key="stairsLevel" data-value="Out of breath after 1-2 flights">0.4</button>
                                 <button class="score-set-btn" data-key="stairsLevel" data-value="Slightly winded after several flights">0.6</button>
@@ -400,7 +417,7 @@
                         </div>
                         <div class="score-display-wrapper">
                             <span id="score-squats">Sq: 0</span>
-                            <div class="score-button-group">
+                            <div class="score-button-group" style="justify-content: flex-end;">
                                 <button class="score-set-btn" data-key="squatsLevel" data-value="Fewer 12">0</button>
                                 <button class="score-set-btn" data-key="squatsLevel" data-value="13-20">0.55</button>
                                 <button class="score-set-btn" data-key="squatsLevel" data-value="More than 20">1</button>
@@ -412,7 +429,7 @@
 
                  <div class="editor-field">
                     <label>💯Activity level score:</label>
-                    <div id="activity-level-score-status" style="padding: 6px; background-color: #21252b; border-radius: 4px; font-size: 13px; font-weight: bold;">
+                    <div id="activity-level-score-status" style="padding: 4px; background-color: #21252b; border-radius: 4px; font-size: 12px; font-weight: bold;">
                         <span id="activity-level-score-value" style="color: #61afef;">N/A</span>
                     </div>
                     <div id="activity-score-breakdown" class="score-breakdown"></div>
@@ -420,7 +437,7 @@
 
                 <div class="editor-field">
                     <label>Plan Score:</label>
-                    <div id="plan-score-status" style="padding: 6px; background-color: #21252b; border-radius: 4px; font-size: 13px; font-weight: bold;">
+                    <div id="plan-score-status" style="padding: 4px; background-color: #21252b; border-radius: 4px; font-size: 12px; font-weight: bold;">
                         <span id="plan-score-value" style="color: #98c379;">N/A</span>
                         <span id="plan-score-formula">(Calculation requires valid data)</span>
                     </div>
@@ -428,20 +445,20 @@
 
                 <div class="editor-field">
                     <label>Assigned Plan:</label>
-                    <div id="assigned-plan-status" style="padding: 6px; background-color: #21252b; border-radius: 4px; font-size: 13px; font-weight: bold;">
+                    <div id="assigned-plan-status" style="padding: 4px; background-color: #21252b; border-radius: 4px; font-size: 12px; font-weight: bold;">
                         <span id="assigned-plan-value" style="color: #61afef;">N/A</span>
                     </div>
                 </div>
             </div>
 
-            <hr style="border-color: #4f5b66; margin: 15px 0;">
+            <hr style="border-color: #4f5b66; margin: 10px 0;">
 
             <div class="editor-field" id="sandbox-container">
                 <label>Sandbox Cookie ('sandbox_test'):</label>
-                <div id="sandbox-status" style="margin-bottom: 10px; padding: 6px; background-color: #21252b; border-radius: 4px; font-size: 11px;">
+                <div id="sandbox-status" style="margin-bottom: 6px; padding: 4px; background-color: #21252b; border-radius: 4px; font-size: 10px;">
                     Current value: <strong id="sandbox-value" style="color: #e5c07b;">Not set</strong>
                 </div>
-                <div id="sandbox-controls" style="display: flex; gap: 10px;">
+                <div id="sandbox-controls" style="display: flex; gap: 6px;">
                     <button id="set-sandbox-true-btn" class="sandbox-btn">Set 'true'</button>
                     <button id="delete-sandbox-btn" class="sandbox-btn danger">Delete</button>
                 </div>
@@ -449,7 +466,7 @@
 
             <div class="editor-field">
                 <label>Discount Controls:</label>
-                <div style="margin-top:5px; display:flex; gap:10px;">
+                <div style="margin-top:4px; display:flex; gap:6px;">
                     <button id="discount-activate-btn" class="sandbox-btn activate-btn">Activate Discount (+10m)</button>
                     <button id="discount-expire-btn" class="sandbox-btn danger">Expire Now</button>
                 </div>
@@ -457,21 +474,40 @@
 
             <div class="editor-field">
                 <label>Marketing Params:</label>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1">
-                        <button id="add-meta-param" class="sandbox-btn" style="width:100%">Meta Params</button>
-                        <div style="font-size:10px; color:#9da5b4; margin-top:2px; text-align:center;">Pixel: <span id="meta-pixel-id">...</span></div>
+                <div style="display:flex; gap:4px; align-items: flex-start; margin-top:2px;">
+                    <div style="flex:1; display:flex; flex-direction:column; gap:2px;">
+                        <button id="add-meta-param" class="sandbox-btn" style="width:100%; padding:4px 0;">Meta</button>
+                        <div id="meta-pixel-id" style="font-size:7px; color:#9da5b4; text-align:center; word-break:break-all; line-height:1;">...</div>
                     </div>
-                    <div style="flex:1">
-                        <button id="add-tiktok-param" class="sandbox-btn" style="width:100%">TikTok Params</button>
-                        <div style="font-size:10px; color:#9da5b4; margin-top:2px; text-align:center;">Pixel: <span id="tiktok-pixel-id">...</span></div>
+                    <div style="flex:1; display:flex; flex-direction:column; gap:2px;">
+                        <button id="add-tiktok-param" class="sandbox-btn" style="width:100%; padding:4px 0;">TikTok</button>
+                        <div id="tiktok-pixel-id" style="font-size:7px; color:#9da5b4; text-align:center; word-break:break-all; line-height:1;">...</div>
+                    </div>
+                    <div style="flex:1; display:flex; flex-direction:column;">
+                        <button id="add-ads-params" class="sandbox-btn" style="width:100%; padding:4px 0;">Ads</button>
+                    </div>
+                    <div style="flex:1; display:flex; flex-direction:column;">
+                        <button id="toggle-is-test" class="sandbox-btn" style="width:100%; padding:4px 0; display:flex; align-items:center; justify-content:center;">Test:<span id="is-test-status" style="color:#e5c07b; margin-left:2px;">...</span></button>
                     </div>
                 </div>
+            </div>
+
+            <hr style="border-color: #4f5b66; margin: 10px 0;">
+
+            <div class="editor-field" id="feature-flags-container">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <label style="margin:0; display:flex; align-items:center; gap:4px;">
+                        Feature Flags (Session Storage):
+                        <button id="refresh-flags-btn" style="background:none; border:none; color:#61afef; cursor:pointer; padding:0; line-height:1; font-size:12px;" title="Refresh flags manually">↻</button>
+                    </label>
+                    <button id="toggle-is-firebase" class="sandbox-btn" style="width:auto; padding:4px 6px; margin:0; display:flex; align-items:center;">FB Override:<span id="is-firebase-status" style="color:#e5c07b; margin-left:2px;">...</span></button>
+                </div>
+                <textarea id="feature-flags-area" style="min-height: 70px; resize: vertical; font-family: monospace; font-size: 11px;" placeholder='{\n  "featureFlags": {\n    "is_paypal_enabled": false,\n    "is_upsell_enabled": false\n  }\n}'></textarea>
             </div>
         </div>
         <div id="cookie-editor-footer">
              <div>
-                <button id="save-cookie-btn" class="action-btn">Save</button>
+                <button id="save-cookie-btn" class="action-btn">Save Data</button>
                 <button id="quick-fill-btn" class="action-btn">Quick Fill</button>
             </div>
             <div>
@@ -500,10 +536,21 @@
     const jsonHighlighter = panel.querySelector('#json-highlighter');
     const searchPrevBtn = panel.querySelector('#search-prev-btn');
     const searchNextBtn = panel.querySelector('#search-next-btn');
+
+    // Marketing Elements
     const addMetaParamBtn = panel.querySelector('#add-meta-param');
     const addTikTokParamBtn = panel.querySelector('#add-tiktok-param');
     const metaPixelIdSpan = panel.querySelector('#meta-pixel-id');
     const tiktokPixelIdSpan = panel.querySelector('#tiktok-pixel-id');
+    const addAdsParamsBtn = panel.querySelector('#add-ads-params');
+    const toggleIsTestBtn = panel.querySelector('#toggle-is-test');
+    const isTestStatusSpan = panel.querySelector('#is-test-status');
+
+    // Feature Flags Elements
+    const featureFlagsArea = panel.querySelector('#feature-flags-area');
+    const toggleIsFirebaseBtn = panel.querySelector('#toggle-is-firebase');
+    const isFirebaseStatusSpan = panel.querySelector('#is-firebase-status');
+    const refreshFlagsBtn = panel.querySelector('#refresh-flags-btn');
 
     // Personal UI
     const pHeight = panel.querySelector('#personal-height');
@@ -552,11 +599,10 @@
     const personalSpoilerContent = panel.querySelector('#personal-spoiler-content');
     const personalSpoilerToggle = panel.querySelector('#personal-spoiler-header .spoiler-toggle');
 
-
     let matches = [];
     let currentMatchIndex = -1;
 
-    // --- Helper for Random String ---
+    // --- Helpers ---
     function generateRandomString(length) {
         const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
         let result = '';
@@ -566,39 +612,166 @@
         return result;
     }
 
-    // --- Logic: Marketing Params ---
+    function generateRandomDigits(length) {
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += Math.floor(Math.random() * 10);
+        }
+        return result;
+    }
+
+    function getFunnelIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('funnel') || 'f1f123r';
+    }
+
+    // --- Logic: Funnel Switcher ---
+    panel.querySelectorAll('.funnel-set-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const f = e.target.dataset.funnel;
+            const url = new URL(window.location.href);
+            url.searchParams.set('funnel', f);
+            window.location.href = url.toString();
+        });
+    });
+
+    // --- Logic: Marketing Params & Feature Flags URL toggles ---
+    function updateUrlTogglesDisplay() {
+        const url = new URL(window.location.href);
+
+        // is_test
+        if (url.searchParams.get('is_test') === 'true') {
+            isTestStatusSpan.textContent = 'ON';
+            isTestStatusSpan.style.color = '#98c379';
+        } else {
+            isTestStatusSpan.textContent = 'OFF';
+            isTestStatusSpan.style.color = '#e06c75';
+        }
+
+        // is_firebase
+        if (url.searchParams.get('is_firebase') === 'true') {
+            isFirebaseStatusSpan.textContent = 'ON';
+            isFirebaseStatusSpan.style.color = '#98c379';
+        } else {
+            isFirebaseStatusSpan.textContent = 'OFF';
+            isFirebaseStatusSpan.style.color = '#e06c75';
+        }
+    }
+
+    let marketingListenersAttached = false;
     function initMarketingParams() {
         const hostname = window.location.hostname;
         const isProd = hostname === 'plan.helloembody.com';
+        const funnelId = getFunnelIdFromUrl();
 
         // Pixel IDs
-        const metaId = isProd ? '1778552282789473' : '716048184868331';
+        let metaId = isProd ? '1778552282789473' : '716048184868331';
+        if (isProd && funnelId === 'w4f123r') {
+            metaId = '859170810531270';
+        }
         const tiktokId = isProd ? 'D46T08JC77U505N92KE0' : 'D429PVRC77UA61AHKL50';
 
         metaPixelIdSpan.textContent = metaId;
         tiktokPixelIdSpan.textContent = tiktokId;
 
-        // Button Handlers (No Reload)
-        addMetaParamBtn.addEventListener('click', () => {
-            const url = new URL(window.location.href);
-            url.searchParams.set('utm_source', 'meta');
-            url.searchParams.set('fbclid', generateRandomString(20)); // Random fbclid
-            url.searchParams.delete('ttclid'); // Remove conflicting param
+        if (!marketingListenersAttached) {
+            addMetaParamBtn.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                url.searchParams.set('utm_source', 'meta');
+                url.searchParams.set('fbclid', generateRandomString(20));
+                url.searchParams.delete('ttclid');
+                window.history.replaceState({}, '', url.toString());
+                showStatus('Meta params added');
+            });
 
-            window.history.replaceState({}, '', url.toString());
-            showStatus('Meta params added (No Reload)');
-        });
+            addTikTokParamBtn.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                url.searchParams.set('utm_source', 'tiktok');
+                url.searchParams.set('ttclid', generateRandomString(20));
+                url.searchParams.delete('fbclid');
+                window.history.replaceState({}, '', url.toString());
+                showStatus('TikTok params added');
+            });
 
-        addTikTokParamBtn.addEventListener('click', () => {
-            const url = new URL(window.location.href);
-            url.searchParams.set('utm_source', 'tiktok');
-            url.searchParams.set('ttclid', generateRandomString(20)); // Random ttclid
-            url.searchParams.delete('fbclid'); // Remove conflicting param
+            addAdsParamsBtn.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                const adId = generateRandomDigits(16);
+                const campId = generateRandomDigits(16);
+                const adsetId = generateRandomDigits(16);
 
-            window.history.replaceState({}, '', url.toString());
-            showStatus('TikTok params added (No Reload)');
-        });
+                url.searchParams.set('utm_term', `${adId}NAME__`);
+                url.searchParams.set('campaign_id', campId);
+                url.searchParams.set('adset_id', adsetId);
+                url.searchParams.set('ad_id', adId);
+                url.searchParams.set('site_source_name', '__SITE_SOURCE_NAME__');
+                url.searchParams.set('utm_medium', 'cpm');
+                url.searchParams.set('utm_id', campId);
+                url.searchParams.set('utm_content', 'test_wallpilates_w2_broad_19Nov');
+                url.searchParams.set('utm_campaign', 'USA_Test_WallPilates_19Nov');
+
+                window.history.replaceState({}, '', url.toString());
+                showStatus('Ads params added');
+            });
+
+            toggleIsTestBtn.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                if (url.searchParams.get('is_test') === 'true') {
+                    url.searchParams.set('is_test', 'false');
+                } else {
+                    url.searchParams.set('is_test', 'true');
+                }
+                window.history.replaceState({}, '', url.toString());
+                updateUrlTogglesDisplay();
+                showStatus('is_test toggled');
+            });
+
+            toggleIsFirebaseBtn.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                if (url.searchParams.get('is_firebase') === 'true') {
+                    url.searchParams.set('is_firebase', 'false');
+                } else {
+                    url.searchParams.set('is_firebase', 'true');
+                }
+                window.history.replaceState({}, '', url.toString());
+                updateUrlTogglesDisplay();
+                showStatus('is_firebase toggled');
+            });
+
+            marketingListenersAttached = true;
+        }
+
+        updateUrlTogglesDisplay();
     }
+
+    // --- Logic: Feature Flags (Session Storage) ---
+    function loadFeatureFlags() {
+        if (document.activeElement === featureFlagsArea) return;
+
+        const storedFlags = sessionStorage.getItem('featureFlags');
+        if (storedFlags !== null) {
+            try {
+                if (storedFlags.trim() === '') {
+                    featureFlagsArea.value = '';
+                } else {
+                    const parsed = JSON.parse(storedFlags);
+                    featureFlagsArea.value = JSON.stringify(parsed, null, 2);
+                }
+            } catch(e) {
+                featureFlagsArea.value = storedFlags;
+            }
+        } else {
+            featureFlagsArea.value = '';
+        }
+    }
+
+    refreshFlagsBtn.addEventListener('click', () => {
+        const activeElem = document.activeElement;
+        if (activeElem === featureFlagsArea) {
+            featureFlagsArea.blur();
+        }
+        loadFeatureFlags();
+        showStatus('Flags Refreshed!');
+    });
 
     // --- Logic: Spoiler Persistence ---
     function restoreSpoilers() {
@@ -700,19 +873,14 @@
 
     function reloadPage(delay = 800) {
         setTimeout(() => {
-            location.reload();
+            window.location.reload();
         }, delay);
-    }
-
-    function getFunnelIdFromUrl() {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('funnel');
     }
 
     // --- Hide Sandbox Check ---
     const currentFunnel = getFunnelIdFromUrl();
     const sandboxContainer = panel.querySelector('#sandbox-container');
-    if ((currentFunnel === 'w2f123r' || currentFunnel === 'chb2f23r' || currentFunnel === 'c2f23r' || currentFunnel === 'tch2f23r') && sandboxContainer) {
+    if ((currentFunnel === 'w2f123r' || currentFunnel === 'w3f123r' || currentFunnel === 'w4f123r' || currentFunnel === 'chb2f23r' || currentFunnel === 'c2f23r' || currentFunnel === 'tch2f23r') && sandboxContainer) {
         sandboxContainer.style.display = 'none';
     }
 
@@ -856,9 +1024,6 @@
 
     function calculateLifestyle(daily, walking) {
         // Map answers to matrix indices
-        // Daily: Mostly sedentary (0), Lightly active (1), Moderately active (2), Very active (3), Highly active (4)
-        // Walking: Less than 1 hour (0), 1-2 hours (1), More than 2 hours (2)
-
         const matrix = {
             "Mostly sedentary": ["Sedentary", "Sedentary", "Moderately Active"],
             "Lightly active": ["Sedentary", "Lightly Active", "Moderately Active"],
@@ -939,7 +1104,7 @@
             progLevelLabel.textContent = 'Yoga Level:';
             progLevelVal.textContent = pInfo.fitnessLevelScreen || '...';
             progLevelRow.style.display = 'flex';
-        } else if (funnel === 'w1f123r' || funnel === 'w2f123r') {
+        } else if (funnel === 'w1f123r' || funnel === 'w2f123r' || funnel === 'w3f123r' || funnel === 'w4f123r') {
             progLevelLabel.textContent = 'Pilates Level:';
             progLevelVal.textContent = pInfo.fitnessLevelScreen || '...';
             progLevelRow.style.display = 'flex';
@@ -966,16 +1131,8 @@
             let target = parseFloat(pInfo.targetWeight.value);
             let current = parseFloat(pInfo.currentWeight.value);
 
-            // Re-convert to KG for diff calculation if needed, but formula relies on % difference
-            // Diff = (Target - Current) / Current
             let diff = (target - current) / current;
-            diffPercent = Math.round(Math.abs(diff * 100)); // Whole number for display/JSON
-
-            // Formula Logic:
-            // B2 = Current (weightInKg)
-            // C2 = Height (heightInM)
-            // D2 = diff (decimal, e.g. -0.25)
-            // 18.5 * C2 * C2 is lower healthy weight boundary
+            diffPercent = Math.round(Math.abs(diff * 100));
 
             let lowerBoundWeight = 18.5 * heightInM * heightInM;
 
@@ -995,18 +1152,15 @@
                 goalMessage = `AUDACIOUS GOAL: gain ${diffPercent}% of your weight`;
             }
 
-            // Update diff in JSON
-            data.weightGoalDiff = Math.round(diff * 100); // e.g. -25 or 15
+            data.weightGoalDiff = Math.round(diff * 100);
         }
         goalMsgVal.textContent = goalMessage;
-
 
         if (bmiNum > 0 && pInfo.weightChange && pInfo.bodyCurrent) {
             const result = calculateMetabolismAndSomatotype(bmiNum, pInfo.weightChange, pInfo.bodyCurrent);
             metaVal.textContent = result.meta;
             somaVal.textContent = result.soma;
 
-            // Update JSON obese object
             if(!data.personalInfo.obese) data.personalInfo.obese = {};
             data.personalInfo.obese.metabolism = result.meta.toLowerCase();
             data.personalInfo.obese.somatotype = result.soma.toLowerCase();
@@ -1023,8 +1177,6 @@
         }
 
         // --- Score Calculations ---
-
-        // Flexibility
         const flexVal = pInfo.flexibilityLevel;
         const flexScore = flexibilityScoreMap[flexVal] ?? 0;
         flexibilityScoreValue.textContent = flexibilityScoreMap[flexVal] !== undefined ? flexScore.toFixed(2) : 'N/A';
@@ -1034,7 +1186,6 @@
         }
         flexScoreBreakdown.innerHTML = flexBreakdownHTML;
 
-        // Yoga
         const yogaVal = pInfo.fitnessLevelScreen;
         const yogaScore = yogaPilatesScoreMap[yogaVal] ?? 0;
         yogaPilatesScoreValue.textContent = yogaPilatesScoreMap[yogaVal] !== undefined ? yogaScore.toFixed(2) : 'N/A';
@@ -1044,7 +1195,6 @@
         }
         yogaScoreBreakdown.innerHTML = yogaBreakdownHTML;
 
-        // Fitness
         const exerciseVal = pInfo.exerciseActivityLevel;
         const stairsVal = pInfo.stairsLevel;
         const squatsVal = pInfo.squatsLevel;
@@ -1062,7 +1212,6 @@
 
         const totalScore = weightedSumFitness / (totalDivisorFitness || 1);
 
-        // Activity Level Logic
         let calculatedLabel = "";
         if (totalScore <= 0.21) calculatedLabel = "very low";
         else if (totalScore <= 0.47) calculatedLabel = "low";
@@ -1091,7 +1240,6 @@
         scoreStairs.textContent = `St: ${stairsScore.toFixed(2)}`;
         scoreSquats.textContent = squatsVal === "I don't know" ? "Sq: N/A" : `Sq: ${squatsScore.toFixed(2)}`;
 
-        // Plan Score
         const weightedSumPlan = (flexScore * weights.flexibility) + (yogaScore * weights.yogaPilates) + (activityScore * weights.activityLevel);
         const planScore = weightedSumPlan / totalWeight;
 
@@ -1103,10 +1251,8 @@
         }
         activityScoreBreakdown.innerHTML = activityBreakdownHTML;
 
-        // Assigned Plan
         let planName = "N/A";
-        const funnelId = getFunnelIdFromUrl() || "";
-        if (funnelId.includes('w1') || funnelId.includes('w2')) {
+        if (funnel.includes('w1') || funnel.includes('w2') || funnel.includes('w3') || funnel.includes('w4')) {
              planName = (planScore <= 0.30) ? "Gentle Wall Pilates" : "Basic Wall Pilates";
         } else {
              planName = (planScore <= 0.30) ? "Gentle Chair Yoga" : "Basic Chair Yoga";
@@ -1115,7 +1261,6 @@
         planScoreFormula.textContent = `PlanScore = ${planScore.toFixed(4)}`;
         fitnessScoreFormula.textContent = `FitScore = ${totalScore.toFixed(4)}`;
 
-        // Show breakdowns
         flexScoreBreakdown.style.display = 'block';
         yogaScoreBreakdown.style.display = 'block';
         fitnessScoreBreakdown.style.display = 'block';
@@ -1238,27 +1383,42 @@
     function loadCookieStates() {
         loadScreensData();
         loadSandboxData();
+        loadFeatureFlags();
         loadDiscount();
         renderAgePresets();
         initMarketingParams();
-        restoreSpoilers(); // Restore expanded state
+        restoreSpoilers();
     }
 
     function saveScreensCookie() {
         try {
-            // Sync all inputs (like email, activeTab) to the JSON text area first
+            // 1. Збереження Cookie (Screens)
             syncInputsToJsonArea();
+            const screensData = JSON.parse(jsonDataArea.value);
+            const encodedValue = encodeURIComponent(JSON.stringify(screensData));
 
-            // Now, parse the definitive data from the text area
-            const data = JSON.parse(jsonDataArea.value);
+            // 2. Збереження Feature Flags (Session Storage)
+            const flagsText = featureFlagsArea.value.trim();
+            let flagsData = null;
 
-            const encodedValue = encodeURIComponent(JSON.stringify(data));
+            if (flagsText !== "") {
+                flagsData = JSON.parse(flagsText);
+            }
+
+            // Якщо обидва JSON валідні (або флаги порожні), зберігаємо все
             setCookie('screens', encodedValue, 365);
+
+            if (flagsText === "") {
+                sessionStorage.removeItem('featureFlags');
+            } else {
+                sessionStorage.setItem('featureFlags', JSON.stringify(flagsData));
+            }
+
             showStatus("Saved! Reloading...");
             reloadPage();
         } catch (e) {
             showStatus('Invalid JSON!', true);
-            console.error("Error saving cookie:", e);
+            console.error("Error saving data:", e);
         }
     }
 
@@ -1266,7 +1426,8 @@
     saveBtn.addEventListener('click', saveScreensCookie);
 
     quickFillBtn.addEventListener('click', () => {
-        const funnelId = getFunnelIdFromUrl();
+        const rawFunnelId = getFunnelIdFromUrl();
+        const funnelId = rawFunnelId || 'f1f123r';
         const randomSuffix = generateRandomString(5);
         let jsonData;
 
@@ -1279,10 +1440,13 @@
                  if (funnelId === 'c2f23r') jsonData.personalInfo.name = "Chair Yoga 2";
              }
              showStatus(`Filled with Chair Yoga data (${funnelId})`);
-        } else if (funnelId === 'w1f123r' || funnelId === 'w2f123r') {
+        } else if (funnelId === 'w1f123r' || funnelId === 'w2f123r' || funnelId === 'w3f123r' || funnelId === 'w4f123r') {
              jsonData = { ...config.wallPilatesJson };
              jsonData.funnelId = funnelId;
-             const prefix = funnelId === 'w2f123r' ? 'testw2' : 'testw1';
+             let prefix = 'testw1';
+             if (funnelId === 'w2f123r') prefix = 'testw2';
+             if (funnelId === 'w3f123r') prefix = 'testw3';
+             if (funnelId === 'w4f123r') prefix = 'testw4';
              if(jsonData.personalInfo) {
                  jsonData.personalInfo.email = `hafrealtestmail${prefix}+test_${randomSuffix}@gmail.com`;
              }
@@ -1301,10 +1465,11 @@
              showStatus(`Filled with Tai Chi data (${funnelId})`);
         } else {
             jsonData = config.defaultQuickFillJson;
+            jsonData.funnelId = 'f1f123r';
             if(jsonData.personalInfo) {
                  jsonData.personalInfo.email = `hafrealtestmailf1+test_${randomSuffix}@gmail.com`;
             }
-            showStatus("Fields filled with default template data.");
+            showStatus("Fields filled with default (f1) data.");
         }
 
         jsonDataArea.value = JSON.stringify(jsonData, null, 2);
@@ -1318,7 +1483,9 @@
         localStorage.clear();
         sessionStorage.clear();
         showStatus("All site data cleared! Reloading...");
-        reloadPage();
+        setTimeout(() => {
+            window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+        }, 800);
     });
 
     panel.querySelector('#close-cookie-editor').addEventListener('click', () => {
@@ -1336,25 +1503,12 @@
             const isHidden = content.style.display === 'none';
             content.style.display = isHidden ? 'block' : 'none';
             toggleIcon.textContent = isHidden ? '[-]' : '[+]';
-
-            // Save state
             localStorage.setItem(storageKey, isHidden);
         });
     };
 
-    toggleSpoiler(
-        scoreSpoilerHeader,
-        scoreSpoilerContent,
-        scoreSpoilerToggle,
-        config.storageKeys.scoreSpoiler
-    );
-
-    toggleSpoiler(
-        personalSpoilerHeader,
-        personalSpoilerContent,
-        personalSpoilerToggle,
-        config.storageKeys.personalSpoiler
-    );
+    toggleSpoiler(scoreSpoilerHeader, scoreSpoilerContent, scoreSpoilerToggle, config.storageKeys.scoreSpoiler);
+    toggleSpoiler(personalSpoilerHeader, personalSpoilerContent, personalSpoilerToggle, config.storageKeys.personalSpoiler);
 
     // Personal Inputs Listeners
     pHeight.addEventListener('input', updateJsonFromPersonalInputs);
@@ -1362,10 +1516,10 @@
     pTargetWeight.addEventListener('input', updateJsonFromPersonalInputs);
     pAge.addEventListener('input', updateJsonFromPersonalInputs);
 
-    // Score Buttons Delegation (Handles both Score and Personal buttons)
+    // Score Buttons Delegation
     panel.querySelector('#cookie-editor-content').addEventListener('click', (e) => {
         const target = e.target.closest('.score-set-btn');
-        if (!target) return;
+        if (!target || target.classList.contains('funnel-set-btn')) return;
         const key = target.dataset.key;
         const value = target.dataset.value;
         if (key && value) {
@@ -1377,13 +1531,13 @@
     setSandboxTrueBtn.addEventListener('click', () => {
         setCookie('sandbox_test', 'true', 365);
         showStatus("Set 'sandbox_test' to true!");
-        loadSandboxData(); // Only reload sandbox UI
+        loadSandboxData();
     });
 
     deleteSandboxBtn.addEventListener('click', () => {
         setCookie('sandbox_test', '', -1);
         showStatus("Deleted 'sandbox_test' cookie!");
-        loadSandboxData(); // Only reload sandbox UI
+        loadSandboxData();
     });
 
     activeTabInput.addEventListener('input', syncInputsToJsonArea);
@@ -1458,7 +1612,6 @@
     };
 
     const initializePanelPosition = (container) => {
-        // --- FORCE RESET FOR MOBILE (v2.2.0 logic) ---
         const savedPos = localStorage.getItem(config.storageKeys.position);
         if (savedPos) {
             try {
@@ -1487,19 +1640,38 @@
     function startCookiePolling() {
         let lastKnownScreensCookie = getCookie('screens');
         let lastKnownSandboxCookie = getCookie('sandbox_test');
+        let lastKnownFeatureFlags = sessionStorage.getItem('featureFlags');
         let lastDiscountTs = localStorage.getItem('discountEndTimestamp');
         let lastDiscountExpired = localStorage.getItem('discountExpired');
 
         pollingInterval = setInterval(() => {
             const currentScreensCookie = getCookie('screens');
             const currentSandboxCookie = getCookie('sandbox_test');
+            const currentFeatureFlags = sessionStorage.getItem('featureFlags');
             const currentDiscountTs = localStorage.getItem('discountEndTimestamp');
             const currentDiscountExpired = localStorage.getItem('discountExpired');
+
+            let needsCookieUpdate = false;
+            let needsFlagUpdate = false;
 
             if (currentScreensCookie !== lastKnownScreensCookie || currentSandboxCookie !== lastKnownSandboxCookie) {
                 lastKnownScreensCookie = currentScreensCookie;
                 lastKnownSandboxCookie = currentSandboxCookie;
-                loadCookieStates();
+                needsCookieUpdate = true;
+            }
+
+            if (currentFeatureFlags !== lastKnownFeatureFlags) {
+                lastKnownFeatureFlags = currentFeatureFlags;
+                needsFlagUpdate = true;
+            }
+
+            if (needsCookieUpdate) {
+                loadScreensData();
+                loadSandboxData();
+            }
+
+            if (needsFlagUpdate && document.activeElement !== featureFlagsArea) {
+                loadFeatureFlags();
             }
 
             if (currentDiscountTs !== lastDiscountTs || currentDiscountExpired !== lastDiscountExpired) {
@@ -1511,7 +1683,6 @@
     }
 
     // --- Initialization ---
-    // Using simple initialization like v1.6.6/v2.2.0 which proved stable
     document.body.appendChild(panel);
     loadCookieStates();
     makeDraggable(panel);
